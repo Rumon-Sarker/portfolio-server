@@ -23,8 +23,6 @@ const app = express();
 // Middleware
 app.use(cors({
   origin: ["http://localhost:5173", "https://portfolio-websites-virid.vercel.app"], // replace with actual Vercel domain
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
 }));
 
 
