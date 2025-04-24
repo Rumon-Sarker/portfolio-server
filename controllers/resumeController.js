@@ -13,7 +13,7 @@ const uploadResume = async (req, res) => {
 
         const resume = new Resume({
             filename: req.file.originalname,
-            path: req.file.path.replace(/\\/g, '/'),
+            path: req.file.path,
         });
 
         const saved = await resume.save();
