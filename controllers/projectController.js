@@ -1,18 +1,11 @@
 import Project from '../models/Project.js';
-import { uploadMultipleToImageBB } from '../config/imagebb.js';
+
 
 // Create Project
 export const createProject = async (req, res) => {
     try {
         const projectData = req.body;
-
-        // Handle image uploads if files are present
-        if (req.files && req.files.length > 0) {
-            const imageFiles = req.files.map(file => `data:${file.mimetype};base64,${file.buffer.toString('base64')}`);
-            const imageUrls = await uploadMultipleToImageBB(imageFiles);
-            projectData.image = imageUrls;
-        }
-
+        console.log("projectData", projectData);
         const project = await Project.create(projectData);
         res.status(201).json({
             success: true,
@@ -25,6 +18,9 @@ export const createProject = async (req, res) => {
         });
     }
 };
+
+
+
 
 // Get All Projects
 export const getProjects = async (req, res) => {
@@ -71,13 +67,6 @@ export const getProjectById = async (req, res) => {
 export const updateProject = async (req, res) => {
     try {
         const projectData = req.body;
-
-        // Handle image uploads if files are present
-        if (req.files && req.files.length > 0) {
-            const imageFiles = req.files.map(file => `data:${file.mimetype};base64,${file.buffer.toString('base64')}`);
-            const imageUrls = await uploadMultipleToImageBB(imageFiles);
-            projectData.image = imageUrls;
-        }
 
         const project = await Project.findByIdAndUpdate(
             req.params.id,

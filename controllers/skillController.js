@@ -1,23 +1,18 @@
 import Skill from "../models/Skill.js";
-import { uploadMultipleToImageBB } from "../config/imagebb.js";
 
 // Create
 export const createSkill = async (req, res) => {
     try {
-        const { name, category, progress } = req.body;
-        let imageUrl = req.body.image;
-
-        if (req.file) {
-            const base64 = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
-            imageUrl = await uploadMultipleToImageBB(base64);
-        }
+        const { name, category, progress, image } = req.body;
 
         const newSkill = await Skill.create({
             name,
             category,
             progress,
-            image: imageUrl
+            image,
         });
+
+        console.log("new skills", newSkill);
 
         console.log("New Skill created:", newSkill);
         res.status(201).json(newSkill);
@@ -41,12 +36,6 @@ export const updateSkill = async (req, res) => {
     try {
         const { name, category, progress } = req.body;
         let imageUrl = req.body.image;
-
-        if (req.file) {
-            const base64 = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
-            imageUrl = await uploadMultipleToImageBB(base64);
-        }
-
         const updated = await Skill.findByIdAndUpdate(
             req.params.id,
             { name, category, progress, image: imageUrl },

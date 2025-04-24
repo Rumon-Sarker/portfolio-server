@@ -21,7 +21,7 @@ const projectSchema = new mongoose.Schema({
     live_link: {
         type: String
     },
-    category:{
+    category: {
         type: "String",
         required: true
     },

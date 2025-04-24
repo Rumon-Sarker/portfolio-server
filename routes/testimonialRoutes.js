@@ -6,15 +6,15 @@ import {
     updateTestimonial,
     deleteTestimonial,
 } from '../controllers/testimonialController.js';
-import upload from '../utils/upload.js';
+
 
 
 const router = express.Router();
 
 
 router.get('/', getTestimonials);
-router.post('/', upload.single('image'), createTestimonial);
-router.put('/:id', upload.single('image'), updateTestimonial);
+router.post('/', createTestimonial);
+router.put('/:id', updateTestimonial);
 router.delete('/:id', deleteTestimonial);
 
 export default router;

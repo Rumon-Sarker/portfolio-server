@@ -6,9 +6,9 @@ export const getAllAbouts = async (req, res) => {
     try {
         const data = await About.find().sort({ createdAt: -1 });
         res.status(200).json(data);
-       
+
     } catch (error) {
-      
+
     }
 };
 
@@ -19,7 +19,7 @@ export const getAboutById = async (req, res) => {
         if (!about) return res.status(404).json({ message: 'Not found' });
         res.status(200).json(about);
     } catch (error) {
-     
+
     }
 };
 
@@ -30,14 +30,14 @@ export const createAbout = async (req, res,) => {
         const newAbout = new About({ title, description });
         await newAbout.save();
         res.status(201).json(newAbout);
-        console.log("about create data is",newAbout);
+        console.log("about create data is", newAbout);
     } catch (error) {
-       
+
     }
 };
 
 // UPDATE existing about by ID
-export const updateAbout = async (req, res, ) => {
+export const updateAbout = async (req, res,) => {
     try {
         const { title, description } = req.body;
         const updated = await About.findByIdAndUpdate(
@@ -48,17 +48,17 @@ export const updateAbout = async (req, res, ) => {
         if (!updated) return res.status(404).json({ message: 'Not found' });
         res.status(200).json(updated);
     } catch (error) {
-      
+
     }
 };
 
 // DELETE about by ID
-export const deleteAbout = async (req, res, ) => {
+export const deleteAbout = async (req, res,) => {
     try {
         const deleted = await About.findByIdAndDelete(req.params.id);
         if (!deleted) return res.status(404).json({ message: 'Not found' });
         res.status(200).json({ message: 'Deleted successfully' });
     } catch (error) {
-       
+
     }
 };
