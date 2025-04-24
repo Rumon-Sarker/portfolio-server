@@ -5,7 +5,7 @@ import Project from '../models/Project.js';
 export const createProject = async (req, res) => {
     try {
         const projectData = req.body;
-        console.log("projectData", projectData);
+
         const project = await Project.create(projectData);
         res.status(201).json({
             success: true,

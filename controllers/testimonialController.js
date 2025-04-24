@@ -12,7 +12,7 @@ export const createTestimonial = async (req, res) => {
             company,
             image
         });
-        console.log("New testimonails", newTestimonial);
+
         res.status(201).json(newTestimonial);
     } catch (err) {
         res.status(400).json({ error: err.message });

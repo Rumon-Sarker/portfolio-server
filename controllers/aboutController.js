@@ -30,7 +30,7 @@ export const createAbout = async (req, res,) => {
         const newAbout = new About({ title, description });
         await newAbout.save();
         res.status(201).json(newAbout);
-        console.log("about create data is", newAbout);
+
     } catch (error) {
 
     }

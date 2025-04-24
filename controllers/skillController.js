@@ -12,9 +12,6 @@ export const createSkill = async (req, res) => {
             image,
         });
 
-        console.log("new skills", newSkill);
-
-        console.log("New Skill created:", newSkill);
         res.status(201).json(newSkill);
     } catch (err) {
         res.status(400).json({ error: err.message });
