@@ -11,7 +11,7 @@ import experienceRoutes from './routes/experienceRoutes.js';
 import testimonialRoutes from './routes/testimonialRoutes.js'; // Import the testimonials route
 import bannerRoutes from './routes/bannerRoutes.js'; // Import the testimonials route
 import resumeRoutes from './routes/resumeRoutes.js';
-
+import authRoutes from "./routes/authRoutes.js";
 
 dotenv.config();
 
@@ -39,6 +39,7 @@ app.use('/api/experience', experienceRoutes);
 app.use('/api/testimonials', testimonialRoutes); // Add this line to include the testimonials route
 app.use('/api/banner', bannerRoutes); // Add this line to include the testimonials route
 app.use('/api/resume', resumeRoutes);
+app.use("/api", authRoutes);
 
 
 
